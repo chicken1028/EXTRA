@@ -3,6 +3,7 @@
 char Key[256];
 
 int img_back;
+int img_Hshikaku[2], img_Rshikaku[2];
 int sound;
 int color_black,color_white,color_red,color_green,color_blue;
 int a = 0,b =  0;
@@ -15,7 +16,11 @@ double parHP[2],parMP[2];
 
 
 void img_load(){
-	img_back = LoadGraph("背景.png");
+	img_back = LoadGraph("画像/背景.png");
+	img_Hshikaku[0] = LoadGraph("画像/高温四角（前）.png");
+	img_Hshikaku[1] = LoadGraph("画像/高温四角（後）.png");
+	img_Rshikaku[0] = LoadGraph("画像/低温四角（前）.png");
+	img_Rshikaku[1] = LoadGraph("画像/低温四角（後）.png");
 }
 
 void sound_load() {
@@ -94,6 +99,8 @@ void mozi(){
 
 void set_img(){
 	DrawGraph(0,0,img_back,FALSE);
+	DrawRotaGraph(100, 250, 0.6, 0.0, img_Hshikaku[1], TRUE);
+	DrawRotaGraph(500, 150, 0.6, 0.0, img_Rshikaku[0], TRUE);
 }
 
 void mausu() {
