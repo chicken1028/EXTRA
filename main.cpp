@@ -13,6 +13,7 @@ int f;
 double MAXHP[2] = { 0,0 }, MAXMP[2] = { 0,0 }, HP[2] = { 0,0 }, MP[2] = { 0,0 };
 int LV[2] = { 1,1 };
 double parHP[2],parMP[2];
+int M = 1;
 
 
 void img_load(){
@@ -96,10 +97,7 @@ void mozi(){
 	DrawBox(419, 39, 621, 56, color_black, FALSE);
 	DrawFormatString(603, 40, color_black, "MP");
 
-	DrawBox(0, 350, 640, 480, color_black, FALSE);
-
-	DrawFormatString(10, 360, color_black, "çUåÇ");
-	DrawBox(9, 359, 43, 375, color_black, FALSE);
+	
 }
 
 void set_img(){
@@ -109,14 +107,45 @@ void set_img(){
 }
 
 void mausu() {
+	
+
+}
+
+void menu() {
+	DrawBox(0, 350, 640, 480, color_black, FALSE);
 	NewMouseOshita = (GetMouseInput() & MOUSE_INPUT_LEFT);
 	GetMousePoint(&x, &y);
-	if (x <= 43 && x >= 9 && y <= 375 && y >= 359) {
-		if (OldMouseOshita == 0 && NewMouseOshita == 1) {
-			HP[1] = HP[1] - 1.0;
+	if (M == 1) {
+		DrawFormatString(10, 360, color_black, "çUåÇ");
+		DrawBox(9, 359, 43, 375, color_black, FALSE);
+		DrawFormatString(50, 360, color_black, "ÉXÉLÉã");
+		DrawBox(49, 359, 99, 375, color_black, FALSE);
+		if (x >= 9 && x <= 43 && y >= 359 && y <= 375) {
+			if (OldMouseOshita == 0 && NewMouseOshita == 1) {
+				HP[1] = HP[1] - 1.0;
+			}
+			OldMouseOshita = NewMouseOshita;
 		}
-		OldMouseOshita = NewMouseOshita;
+
+		if (x >= 49 && x <= 99 && y >= 359 && y <= 375) {
+			if (OldMouseOshita == 0 && NewMouseOshita == 1) {
+				M = 2;
+			}
+			OldMouseOshita = NewMouseOshita;
+		}
 	}
+
+	if (M == 2) {
+		DrawFormatString(2, 462, color_black, "ñﬂÇÈ");
+		DrawBox(1, 461, 34, 479, color_black, FALSE);
+		if (x >= 1 && x <= 34 && y >= 461 && y <= 479) {
+			if (OldMouseOshita == 0 && NewMouseOshita == 1) {
+				M = 1;
+			}
+			OldMouseOshita = NewMouseOshita;
+		}
+	}
+
 
 }
 
@@ -156,6 +185,8 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		ver();
 
 		mozi();
+
+		menu();
 
 		mausu();
 		
