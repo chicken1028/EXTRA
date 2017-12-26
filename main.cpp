@@ -8,7 +8,7 @@ int sound;
 int color_black,color_white,color_red,color_green,color_blue;
 int a = 0,b =  0;
 int x, y, mouse;
-int i = 0;
+int i = 0, OldMouseOshita = 0, NewMouseOshita;
 int f;
 double MAXHP[2] = { 0,0 }, MAXMP[2] = { 0,0 }, HP[2] = { 0,0 }, MP[2] = { 0,0 };
 int LV[2] = { 1,1 };
@@ -95,6 +95,11 @@ void mozi(){
 	DrawFormatString(603, 20, color_black, "HP");
 	DrawBox(419, 39, 621, 56, color_black, FALSE);
 	DrawFormatString(603, 40, color_black, "MP");
+
+	DrawBox(0, 350, 640, 480, color_black, FALSE);
+
+	DrawFormatString(10, 360, color_black, "çUåÇ");
+	DrawBox(9, 359, 43, 375, color_black, FALSE);
 }
 
 void set_img(){
@@ -104,6 +109,14 @@ void set_img(){
 }
 
 void mausu() {
+	NewMouseOshita = (GetMouseInput() & MOUSE_INPUT_LEFT);
+	GetMousePoint(&x, &y);
+	if (x <= 43 && x >= 9 && y <= 375 && y >= 359) {
+		if (OldMouseOshita == 0 && NewMouseOshita == 1) {
+			HP[1] = HP[1] - 1.0;
+		}
+		OldMouseOshita = NewMouseOshita;
+	}
 
 }
 
