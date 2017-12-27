@@ -98,6 +98,9 @@ void mozi(){
 	DrawBox(419, 39, 621, 56, color_black, FALSE);
 	DrawFormatString(603, 40, color_black, "MP");
 
+	DrawFormatString(288, 20, color_black, "TURN");
+	DrawFormatString(303.5, 40, color_black, "%d", turn);
+
 	
 }
 
