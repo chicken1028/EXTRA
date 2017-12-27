@@ -118,8 +118,11 @@ void mausu() {
 void enemy() {
 	if (turn % 2 == 0) {
 		HP[0] = HP[0] - 1;
-		turn = turn + 1;
+		if (turn == turn) {
+			turn = turn + 1;
+		}
 	}
+	
 
 }
 
@@ -161,7 +164,7 @@ void menu() {
 				OldMouseOshita = NewMouseOshita;
 			}
 		}
-
+		
 	}
 }
 
