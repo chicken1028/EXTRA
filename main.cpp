@@ -57,19 +57,14 @@ void ver() {
 	if (HP[0] < 0) {
 		HP[0] = 0;
 	}
-	if (parHP[0] < 0.1) {
-		parHP[0] = 0.1;
-	}
-	DrawBox(20, 20, 200 * parHP[0], 35, color_green, TRUE);
+
+	DrawBox(20, 20, 20 + (200 * parHP[0]), 35, color_green, TRUE);
 
 	parMP[0] = MP[0] / MAXMP[0];
 	if (MP[0] < 0) {
 		MP[0] = 0;
 	}
-	if (parMP[0] < 0.1) {
-		parMP[0] = 0.1;
-	}
-	DrawBox(20, 40, 200 * parMP[0], 55, color_blue, TRUE);
+	DrawBox(20, 40, 20 + (200 * parMP[0]), 55, color_blue, TRUE);
 	//ここまでプレイヤー１
 
 	//ここからプレイヤー２
@@ -88,9 +83,9 @@ void ver() {
 }
 
 void mozi(){
-	DrawBox(19,19,201,36,color_black,FALSE);
+	DrawBox(19,19,221,36,color_black,FALSE);
 	DrawFormatString(20, 20, color_black, "HP");
-	DrawBox(19, 39, 201, 56, color_black, FALSE);
+	DrawBox(19, 39, 221, 56, color_black, FALSE);
 	DrawFormatString(20, 40, color_black, "MP");
 
 	DrawBox(419, 19, 621, 36, color_black, FALSE);
@@ -117,7 +112,7 @@ void mausu() {
 
 void enemy() {
 	if (turn % 2 == 0) {
-		HP[0] = HP[0] - 1;
+		HP[0] = HP[0] - 1.0;
 		if (turn == turn) {
 			turn = turn + 1;
 		}
