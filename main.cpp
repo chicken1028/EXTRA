@@ -1,4 +1,5 @@
 #include "DxLib.h"
+#include <time.h>
 
 char Key[256];
 
@@ -150,6 +151,18 @@ void menu() {
 		}
 
 		if (M == 2) {
+			DrawFormatString(10,360,color_black,"炎");
+			DrawBox(9, 359, 27, 375, color_black, FALSE);
+			if (x >= 9 && x <= 27 && y >= 359 && y <= 375) {
+				if (OldMouseOshita == 0 && NewMouseOshita == 1) {
+					if (MP[0] >= 5) {
+						MP[0] = MP[0] - 5.0;
+						HP[1] = HP[1] - (rand() % 10 + 1);
+						turn = turn + 1;
+					}
+				}
+				OldMouseOshita = NewMouseOshita;
+			}
 			DrawFormatString(2, 462, color_black, "戻る");
 			DrawBox(1, 461, 34, 479, color_black, FALSE);
 			if (x >= 1 && x <= 34 && y >= 461 && y <= 479) {
@@ -167,7 +180,6 @@ void renda(){
 
 	
 }
-
 
 
 
@@ -190,7 +202,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		RefreshTime = GetNowCount();               //今の時間を取得
 		ClearDrawScreen();                         //裏画面のデータを全て削除
 
-		
+		srand((unsigned)time(NULL));
 
 		set_img();
 
